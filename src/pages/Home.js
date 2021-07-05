@@ -50,27 +50,27 @@ const Home = () => {
     return null;
   };
 
+  const onSubmit = () => {
+    if(inputRef.current) {
+      inputRef.current.blur()
+    }
+  }
+
   const inputName = "search-query";
 
   return (
     <>
       <StickyHeader>
-        <Form
-          onSubmit={(e) => {
-            setQ(e.value[inputName]);
-            inputRef.current.blur();
-          }}
-        >
+        <Form onSubmit={onSubmit}>
           <TextInput
             placeholder="Search for articles..."
             value={locationParams.q || ""}
-            onChange={(e) => setQ(e.target.value)}
+            onChange={setQ}
             icon={getInputIcon()}
             reverse
             size="xlarge"
             name={inputName}
             textAlign="center"
-            type="search"
             ref={inputRef}
           />
         </Form>
