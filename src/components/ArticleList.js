@@ -10,18 +10,17 @@ import { articleProps, searchParamsProps } from "../utils/propTypes";
 const ArticleList = ({ articles, searchParams }) => {
   return (
     <Box margin={{ top: "small", bottom: "medium" }}>
-      {!searchParams.q && (
-        <Heading
-          margin={{ bottom: "small", top: "none" }}
-          level={2}
-          size="small"
-        >
-          Suggested articles
-        </Heading>
-      )}
+      <Heading margin={{ bottom: "small", top: "none" }} level={2} size="small">
+        {searchParams.q ? "Your results" : "Suggested articles"}
+      </Heading>
       <Box as="ul" pad="none" margin={{ bottom: "small" }} direction="column">
         {articles.map((article) => (
-          <Box as="li" margin={{ vertical: "small" }} key={article.id} data-testid="article-result">
+          <Box
+            as="li"
+            margin={{ vertical: "small" }}
+            key={article.id}
+            data-testid="article-result"
+          >
             <Link
               to={{
                 pathname: `/article/${article.id}`,
