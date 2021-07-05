@@ -29,4 +29,9 @@ describe("Article", () => {
 
     expect(window.scrollTo).toHaveBeenCalledWith({ top: 0 });
   });
+
+  it("renders spinner on mount", () => {
+    const { getByTestId } = renderWithProviders(<Article {...props} />);
+    expect(getByTestId("loading-spinner")).toBeInTheDocument();
+  });
 });

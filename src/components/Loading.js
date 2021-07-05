@@ -11,6 +11,7 @@ const Loading = () => (
     justify="center"
     align="center"
     margin="auto"
+    data-testid="loading-spinner"
   >
     <Spinner size="xlarge" />
   </Box>

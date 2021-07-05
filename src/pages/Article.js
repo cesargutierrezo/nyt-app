@@ -7,6 +7,7 @@ import StickyHeader from "../components/StickyHeader";
 import { nytApi, useGetArticlesQuery } from "../redux/api/nytApi";
 import getQueryString from "../utils/getQueryString";
 import { searchParamsProps } from "../utils/propTypes";
+import Loading from "../components/Loading";
 
 /**
  * Article route component
@@ -92,7 +93,7 @@ const Article = ({
   // redirect to Home page if no article is found
   if (!fetchQueryResult.isFetching && !article) return <Redirect to="/" />;
 
-  return null;
+  return <Loading />;
 };
 
 Article.propTypes = {
