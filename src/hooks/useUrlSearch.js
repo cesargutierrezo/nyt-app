@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 import getQueryString from "../utils/getQueryString";
-import { debounce } from "lodash";
+import debounce from "lodash/debounce";
 import { SEARCH_PARAMS_DELAY } from "../constants";
 
 /**
