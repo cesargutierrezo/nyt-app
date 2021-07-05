@@ -19,10 +19,11 @@ const Article = ({
 }) => {
   const { searchParams: locationSearchParams } = state;
 
-  // get data from previous search result or fetch new data by article id
+  // check data from previous search result
   const stateQueryResult =
     nytApi.endpoints.getArticles.useQueryState(locationSearchParams);
 
+  // fetch new data if article not found in previous search
   const fetchQueryResult = useGetArticlesQuery(
     { id },
     { skip: Boolean(stateQueryResult.data) }
@@ -64,7 +65,7 @@ const Article = ({
         >
           {article.image && (
             <Box>
-              <Image fit="cover" src={article.image} />
+              <Image fit="cover" src={article.image} alt="Article image" />
             </Box>
           )}
           <Heading>{article.title}</Heading>
