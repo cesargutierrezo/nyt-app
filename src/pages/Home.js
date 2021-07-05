@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
   Main,
   Pagination,
@@ -20,6 +20,7 @@ import { ARTICLES_PER_PAGE, MAX_ARTICLE } from "../constants";
  * @returns {JSX.Element}
  */
 const Home = () => {
+  const inputRef = useRef();
   const { setQ, setPage, locationParams, searchParams } = useUrlSearch();
 
   useEffect(() => {
@@ -54,7 +55,12 @@ const Home = () => {
   return (
     <>
       <StickyHeader>
-        <Form onSubmit={(e) => setQ(e.value[inputName])}>
+        <Form
+          onSubmit={(e) => {
+            setQ(e.value[inputName]);
+            inputRef.current.blur();
+          }}
+        >
           <TextInput
             placeholder="Search for articles..."
             value={locationParams.q || ""}
@@ -64,6 +70,8 @@ const Home = () => {
             size="xlarge"
             name={inputName}
             textAlign="center"
+            type="search"
+            ref={inputRef}
           />
         </Form>
       </StickyHeader>
