@@ -51,12 +51,10 @@ const Home = () => {
   };
 
   const onSubmit = () => {
-    if(inputRef.current) {
-      inputRef.current.blur()
+    if (inputRef.current) {
+      inputRef.current.blur();
     }
-  }
-
-  const inputName = "search-query";
+  };
 
   return (
     <>
@@ -69,7 +67,7 @@ const Home = () => {
             icon={getInputIcon()}
             reverse
             size="xlarge"
-            name={inputName}
+            name="search-query"
             textAlign="center"
             ref={inputRef}
           />
