@@ -25,6 +25,7 @@ export const nytApi = createApi({
             fq: `document_type:("article")${
               id ? ` AND _id:("${ARTICLE_ID_PREFIX}${id}")` : ""
             }`,
+            sort: "newest",
           },
         };
       },

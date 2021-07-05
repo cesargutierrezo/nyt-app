@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Redirect, Link } from "react-router-dom";
 import { Main, Heading, Box, Paragraph, Anchor, Image, Text } from "grommet";
@@ -17,6 +18,11 @@ const Article = ({
   },
   location: { state = {} },
 }) => {
+  // scroll to top on mount
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
   const { searchParams: locationSearchParams } = state;
 
   // check data from previous search result
