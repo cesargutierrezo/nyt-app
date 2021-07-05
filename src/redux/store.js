@@ -1,6 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { nytApi } from "./api/nytApi";
 
+/**
+ * Returns new store
+ */
 export const getNewStore = () =>
   configureStore({
     reducer: {

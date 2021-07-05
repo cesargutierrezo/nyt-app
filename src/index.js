@@ -7,7 +7,7 @@ import * as serviceWorker from "./serviceWorker";
 import { Grommet } from "grommet";
 import theme from "./theme";
 
-const store = getNewStore()
+const store = getNewStore();
 
 ReactDOM.render(
   <React.StrictMode>
