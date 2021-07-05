@@ -21,7 +21,7 @@ const ArticleList = ({ articles, searchParams }) => {
       )}
       <Box as="ul" pad="none" margin={{ bottom: "small" }} direction="column">
         {articles.map((article) => (
-          <Box as="li" margin={{ vertical: "small" }} key={article.id}>
+          <Box as="li" margin={{ vertical: "small" }} key={article.id} data-testid="article-result">
             <Link
               to={{
                 pathname: `/article/${article.id}`,

@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { store } from "./redux/store";
+import { getNewStore } from "./redux/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { Grommet } from "grommet";
 import theme from "./theme";
+
+const store = getNewStore()
 
 ReactDOM.render(
   <React.StrictMode>

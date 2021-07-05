@@ -1,15 +1,19 @@
+import { renderWithProviders } from "../../test-utils";
+import Article from "../Article";
+import articlesearch from "../../mocks/responses/articlesearch.json";
+import { ARTICLE_ID_PREFIX } from "../../constants";
+
 describe("Article", () => {
-  describe("when article data exists in store", () => {
-    it("renders article from state data", () => {});
-    it("does not fetch new data", () => {});
-  });
-
-  describe("when article data does not exist in store", () => {
-    it("fetches new data", () => {});
-    it("renders article from fetched data", () => {});
-  });
-
-  describe("when article data is not found after fetch", () => {
-    it("redirects to `/`", () => {});
+  it("renders article components", async () => {
+    const testArticle = articlesearch.response.docs[0];
+    const props = {
+      match: { params: { id: testArticle._id.replace(ARTICLE_ID_PREFIX, "") } },
+      location: { state: {} },
+    };
+    const { findByText } = renderWithProviders(<Article {...props} />);
+    await findByText(testArticle.headline.main);
+    await findByText(testArticle.type_of_material);
+    await findByText(testArticle.snippet);
+    await findByText(testArticle.byline.original);
   });
 });
