@@ -15,5 +15,5 @@ export const articleProps = PropTypes.shape({
   id: PropTypes.string.isRequired,
   web_url: PropTypes.string.isRequired,
   image: PropTypes.string,
-  typeOfMaterial: PropTypes.string.isRequired,
+  typeOfMaterial: PropTypes.string,
 });

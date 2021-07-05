@@ -13,7 +13,7 @@ import { SEARCH_PARAMS_DELAY } from "../constants";
  * `searchParams`: a copy of `locationParams` that is updated through a debounced function.
  * This is useful when using RTK Query hooks to reduce the amount of api calls
  * @typedef {{q?: string, page?: string}} IParams
- * @returns {{setQ: () => void, setPage: () => void, locationParams: IParams, searchParams: IParams}}
+ * @returns {{setQ: (searchStr: string) => void, setPage: (page: number | string) => void, locationParams: IParams, searchParams: IParams}}
  */
 export const useUrlSearch = () => {
   const {
@@ -40,8 +40,7 @@ export const useUrlSearch = () => {
     }
   }, [locationParams, searchParams, debouncedSetSearchParams, setSearchParams]);
 
-  const setQ = (event) => {
-    const searchStr = event.target.value;
+  const setQ = (searchStr) => {
     replace({
       search: searchStr
         ? `?${getQueryString({ ...(searchStr && { q: searchStr }), page: 1 })}`

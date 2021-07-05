@@ -40,7 +40,7 @@ export const nytApi = createApi({
           image: article.multimedia[0]?.url
             ? `${IMAGE_URL_BASE}${article.multimedia[0].url}`
             : null,
-          typeOfMaterial: article.type_of_material,
+          typeOfMaterial: article?.type_of_material,
         }));
 
         return { articles, meta };

@@ -1,5 +1,13 @@
 import { useEffect } from "react";
-import { Main, Pagination, TextInput, Spinner, Card, Text } from "grommet";
+import {
+  Main,
+  Pagination,
+  TextInput,
+  Spinner,
+  Card,
+  Text,
+  Form,
+} from "grommet";
 import { Close as IconClose } from "grommet-icons";
 import StickyHeader from "../components/StickyHeader";
 import ArticleList from "../components/ArticleList";
@@ -26,30 +34,38 @@ const Home = () => {
   // number of articles available (actual results or api limit based on max available pages)
   const numberItems = data?.meta.hits && Math.min(data.meta.hits, MAX_ARTICLE);
 
+  const getInputIcon = () => {
+    if (isFetching) return <Spinner size="0.4em" />;
+    if (locationParams.q) {
+      return (
+        <IconClose
+          onClick={setQ}
+          role="button"
+          cursor="pointer"
+          pointerEvents="auto"
+        />
+      );
+    }
+    return null;
+  };
+
+  const inputName = "search-query";
+
   return (
     <>
       <StickyHeader>
-        <TextInput
-          placeholder="Search for articles..."
-          value={locationParams.q || ""}
-          onChange={setQ}
-          icon={
-            isFetching ? (
-              <Spinner size="0.4em" />
-            ) : (
-              <IconClose
-                onClick={setQ}
-                role="button"
-                cursor="pointer"
-                pointerEvents="auto"
-              />
-            )
-          }
-          reverse
-          size="xlarge"
-          name="search-query"
-          textAlign="center"
-        />
+        <Form onSubmit={(e) => setQ(e.value[inputName])}>
+          <TextInput
+            placeholder="Search for articles..."
+            value={locationParams.q || ""}
+            onChange={(e) => setQ(e.target.value)}
+            icon={getInputIcon()}
+            reverse
+            size="xlarge"
+            name={inputName}
+            textAlign="center"
+          />
+        </Form>
       </StickyHeader>
       <Main
         width="large"
