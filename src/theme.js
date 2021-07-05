@@ -19,6 +19,9 @@ const theme = {
     icons: {
       color: "brand",
     },
+    controls: {
+      gap: "none",
+    },
   },
   heading: {
     level: {

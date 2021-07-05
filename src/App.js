@@ -2,8 +2,8 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Loading from "./components/Loading";
+import Home from "./pages/Home";
 
-const Home = lazy(() => import("./pages/Home"));
 const Article = lazy(() => import("./pages/Article"));
 
 const GlobalStyle = createGlobalStyle`
@@ -24,6 +24,6 @@ const App = () => {
       </Suspense>
     </Router>
   );
-};;
+};
 
 export default App;

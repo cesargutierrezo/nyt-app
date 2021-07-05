@@ -41,7 +41,6 @@ const Article = ({
             margin="auto"
             justify="between"
             direction="row"
-            gap="large"
             align="center"
           >
             <Link
